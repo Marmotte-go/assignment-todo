@@ -1,6 +1,7 @@
 import "./App.scss";
 import AddNew from "./components/AddNew";
 import TodoItem from "./components/TodoItem";
+import github from "./media/github-mark.svg";
 
 import { useState } from "react";
 
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>ToDo List</h1>
+      <h1>ToDo List <a href="https://github.com/Marmotte-go/assignment-todo.git" target="_blank" rel="noreferrer"><img src={github} alt="github"/></a></h1>
       <p>
         This is a demo of todo list. After you refresh this page, all the data
         will be lost.
