@@ -1,0 +1,49 @@
+$primary-color: #007bff;
+$primary-color-dark: #0062cc;
+$primary-color-light: #cdecff;
+
+$secondary-color: #6c757d;
+$secondary-color-dark: #343a40;
+$secondary-color-light: #f8f9fa;
+
+$warning-color: #ffc107;
+$warning-color-dark: #d39e00;
+$warning-color-light: #ffd659;
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: $secondary-color-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;  
+
+  .App{
+    color: $primary-color-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    max-width: 600px;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0;
+    }
+    p{
+      font-size: 0.7rem;
+      margin-top: 0;
+    }
+    .todo-list{
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}

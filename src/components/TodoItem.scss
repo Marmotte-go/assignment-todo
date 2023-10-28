@@ -1,0 +1,104 @@
+@import "../App.scss";
+
+.itemWrapper{
+  width: 100%;
+
+.todoItem {
+  width: 100%;
+  background-color: $primary-color-light;
+  color: $secondary-color-dark;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0 1.2rem 1.2rem 0;
+  border-left: 8px solid $secondary-color-dark;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($primary-color-light, 10%);
+  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+    }
+  }
+
+  form {
+    // display: none;
+    width: 100%;
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $primary-color-light;
+    border-radius: 10px;
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border: 1px solid $secondary-color;
+      border-radius: 5px;
+      &:focus{
+        outline: none;
+        border: 1px solid $primary-color;
+      }
+    }
+
+    .info{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      gap: 1rem;
+      input{
+        margin: 0;
+      }
+      #status{
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid $secondary-color;
+        border-radius: 5px;
+        &:focus{
+          outline: none;
+          border: 1px solid $primary-color;
+        }
+      }
+    }
+
+    .btn {
+      background-color: $primary-color;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      margin: 1rem;
+      width: 150px;
+      cursor: pointer;
+      &:hover{
+        background-color: $primary-color-dark;
+      }
+  
+      &.cancel{
+        background-color: $secondary-color;
+        &:hover{
+          background-color: $secondary-color-dark;
+        }
+      }
+    }
+  }
+}
