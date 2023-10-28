@@ -5,29 +5,25 @@ import TodoItem from "./components/TodoItem";
 import { useState } from "react";
 
 function App() {
-  const [todoList, setTodoList] = useState([
-    {
-      id: 1,
-      title: "Go to work",
-      deadline: "8 :00",
-      status: "done",
-    },
-    {
-      id: 2,
-      title: "Buy some food",
-      deadline: "9 :00",
-      status: "inPregress",
-    },
-    {
-      id: 3,
-      title: "Go to bed",
-      deadline: "11 :00",
-      status: "notStarted",
-    },
-  ]);
+  const [todoList, setTodoList] = useState([]);
+  const [currentId, setCurrentId] = useState(1);
 
   const handleAddNew = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
+    const newTodoWithID = {...newTodo, id: currentId};
+    setTodoList([...todoList, newTodoWithID]);
+    setCurrentId(prev => prev + 1);
+  }
+
+  //deep copy todoList to change the value
+  //not the best way to do this, but since we don't have a database, we have to do this
+  const handleEdit = (id, newTodo) => {
+    const newTodoList = todoList.map((todo) => {
+      if (todo.id === id) {
+        return newTodo;
+      }
+      return todo;
+    });
+    setTodoList(newTodoList);
   }
 
   return (
@@ -37,12 +33,17 @@ function App() {
         This is a demo of todo list. After you refresh this page, all the data
         will be lost.
       </p>
-      <AddNew handleAddNew={handleAddNew} id={todoList.length} />
+      <AddNew handleAddNew={handleAddNew} id={currentId} />
       <section className="todo-list">
         {todoList.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} handleEdit={handleEdit} />
         ))}
       </section>
+      <footer>
+        <span style={{borderLeftColor: "lightgreen"}}>Done</span>
+        <span style={{borderLeftColor: "tomato"}}>Not Started</span>
+        <span style={{borderLeftColor: "gold"}}>In progress</span>
+      </footer>
     </div>
   );
 }

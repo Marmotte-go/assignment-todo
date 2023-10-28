@@ -1,16 +1,25 @@
 import "./TodoItem.scss";
 import { useState } from "react";
+import Editor from "./Editor";
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, handleEdit }) => {
+  const [newTodo, setNewTodo] = useState({
+    id: todo.id,
+    title: todo.title,
+    deadline: todo.deadline,
+    status: todo.status,
+  });
+
+  console.log("rerender");
   let color = "";
-  switch (todo.status) {
+  switch (newTodo.status) {
     case "done":
       color = "lightgreen";
       break;
     case "notStarted":
       color = "tomato";
       break;
-    case "inPregress":
+    case "inProgress":
       color = "gold";
       break;
     default:
@@ -20,14 +29,20 @@ const TodoItem = ({ todo }) => {
   const [showForm, setShowForm] = useState(false);
   const toggleShowForm = () => {
     setShowForm(!showForm);
-  }
+  };
 
   const handleCancel = () => {
+    setNewTodo({
+      id: todo.id,
+      title: todo.title,
+      deadline: todo.deadline,
+      status: todo.status,
+    });
     setShowForm(false);
   };
 
   const handleConfirm = () => {
-    //do something
+    handleEdit(newTodo.id, newTodo);
     setShowForm(false);
   };
 
@@ -41,22 +56,10 @@ const TodoItem = ({ todo }) => {
         <h3>{todo.title}</h3>
         <p>{todo.deadline}</p>
       </div>
+
       {showForm && (
-        <form>
-          <input
-            type="text"
-            placeholder="Title"
-            className="title"
-            value={todo.title}
-          />
-          <div className="info">
-            <input type="text" placeholder="Deadline" value={todo.deadline} />
-            <select name="status" id="status" value={todo.status}>
-              <option value="notStarted">Not Started</option>
-              <option value="inProgress">In Progress</option>
-              <option value="done">Done</option>
-            </select>
-          </div>
+        <div className="editor-form">
+          <Editor setNewTodo={setNewTodo} newTodo={newTodo} />
           <div className="btns">
             <button className="btn cancel" onClick={handleCancel}>
               Cancel
@@ -65,7 +68,7 @@ const TodoItem = ({ todo }) => {
               Confirm
             </button>
           </div>
-        </form>
+        </div>
       )}
     </div>
   );
