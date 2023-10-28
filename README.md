@@ -2,7 +2,7 @@
 
 This is an assignment from Integrefy tech interview preparation
 
-[Check here for the demo](todo.yuankedev.fun)
+[Check here for the demo](http://todo.yuankedev.fun)
 
 ## Assignment requirements
 
