@@ -1,0 +1,45 @@
+@import "../App.scss";
+
+.editor {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $primary-color-light;
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 1px solid $secondary-color;
+    border-radius: 5px;
+    &:focus{
+      outline: none;
+      border: 1px solid $primary-color;
+    }
+  }
+
+  .info{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    input{
+      margin: 0;
+    }
+    #status{
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid $secondary-color;
+      border-radius: 5px;
+      &:focus{
+        outline: none;
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+}
